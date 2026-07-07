@@ -66,10 +66,11 @@ body.light {
   border-radius: 24px;
   background: rgba(10,10,10,.62);
   backdrop-filter: blur(22px);
-  z-index: 50;
+  z-index: 200;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .brand {
@@ -173,16 +174,16 @@ body.light {
   box-shadow: 0 20px 70px rgba(212,175,55,.28);
 }
 
-.category-tabs {
-  position: sticky;
-  top: 96px;
-  z-index: 40;
+.category-tabs{
+  position: relative;
+  top: auto;
+  z-index: 100;
   display: flex;
   gap: 10px;
   overflow-x: auto;
   padding: 14px;
-  background: rgba(7,7,7,.7);
-  backdrop-filter: blur(20px);
+  background: #0b0b0b;
+  backdrop-filter: none;
 }
 
 .category-tabs::-webkit-scrollbar {
@@ -565,3 +566,157 @@ body.light footer {
 body{
     padding-bottom:85px;
 }
+
+#scrollTopBtn{
+    position: fixed;
+    right: 18px;
+    bottom: 85px;
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background:#f4c430;
+    color:#111;
+    font-size:26px;
+    font-weight:900;
+    cursor:pointer;
+    z-index:999999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(25px) scale(.7) rotate(90deg);
+
+    transition:
+        opacity .4s ease,
+        transform .4s cubic-bezier(.22,1,.36,1),
+        visibility .4s;
+}
+
+#scrollTopBtn.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0) scale(1) rotate(0deg);
+}
+
+#scrollTopBtn:hover{
+    transform:translateY(-6px) scale(1.08);
+    box-shadow:0 10px 25px rgba(244,196,48,.45);
+}
+
+#scrollTopBtn.clicked{
+    transform:scale(.85);
+}
+
+.floating-buttons{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    z-index:999999;
+}
+
+.fab{
+    width:52px !important;
+    height:52px !important;
+    min-width:52px !important;
+    min-height:52px !important;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 !important;
+    line-height:1;
+    font-size:26px;
+    box-sizing:border-box;
+    text-decoration:none !important;
+}
+
+
+.phone-fab{
+    background:#28a745;
+    color:#fff;
+}
+
+.phone-fab span{
+    display:block;
+    transform:translateY(1px);
+}
+
+.top-fab{
+    background:#f4c430;
+    color:#111;
+    font-size:28px;
+}
+
+.top-fab.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0) scale(1);
+}
+
+.fab:hover{
+    transform:scale(1.08);
+}
+
+.floating-buttons{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:.3s ease;
+}
+
+.floating-buttons.show{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+.drink-list{
+    background:#111;
+    border-radius:22px;
+    padding:22px;
+    margin:20px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.drink-list h2{
+    color:#f4c430;
+    margin-bottom:18px;
+    font-size:28px;
+}
+
+.drink-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+    border-bottom:1px dashed rgba(255,255,255,.12);
+}
+
+.drink-item:last-child{
+    border-bottom:none;
+}
+
+.drink-item span{
+    color:#fff;
+    font-size:18px;
+    font-weight:600;
+}
+
+.drink-item strong{
+    color:#f4c430;
+    font-size:20px;
+}
+
+.drink-title{
+    margin-top:35px;
+    padding-top:25px;
+    border-top:2px solid rgba(244,196,48,.25);
+}
+

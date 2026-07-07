@@ -7,6 +7,12 @@ const themeBtn = document.getElementById("themeBtn");
 window.addEventListener("load", () => {
   setTimeout(() => {
     loader.classList.add("hide");
+
+    const floatingButtons = document.querySelector(".floating-buttons");
+    if (floatingButtons) {
+      floatingButtons.classList.add("show");
+    }
+
   }, 900);
 });
 
@@ -33,10 +39,23 @@ tabs.forEach(tab => {
       const match = category === "all" || card.dataset.category === category;
       card.style.display = match ? "block" : "none";
 
-      setTimeout(() => {
-        if (match) card.classList.add("show");
-      }, 80);
+      if (match) {
+        card.classList.add("show");
+      }
     });
+
+    searchInput.value = "";
+
+    setTimeout(() => {
+      const grid = document.querySelector(".menu-grid");
+      const topbar = document.querySelector(".topbar");
+      const offset = topbar ? topbar.offsetHeight + 20 : 20;
+
+      window.scrollTo({
+        top: grid.offsetTop - offset,
+        behavior: "smooth"
+      });
+    }, 100);
   });
 });
 
@@ -65,4 +84,38 @@ document.addEventListener("mouseleave", () => {
   document.querySelectorAll(".product-card").forEach(card => {
     card.style.transform = "";
   });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    if (!scrollTopBtn) return;
+
+    // Sayfa açılınca gizli başlasın
+    scrollTopBtn.classList.remove("show");
+
+    // Scroll olunca göster/gizle
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add("show");
+        } else {
+            scrollTopBtn.classList.remove("show");
+        }
+    });
+
+    // Tıklayınca yukarı çık
+    scrollTopBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // Küçük tıklama animasyonu
+        scrollTopBtn.classList.add("clicked");
+        setTimeout(() => {
+            scrollTopBtn.classList.remove("clicked");
+        }, 250);
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
 });
