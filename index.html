@@ -5,56 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Mutfak Cafe & Bistro | Premium QR Menü</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <div class="loader">
-    <div class="loader-logo">Mutfak</div>
-    <span>Premium menü hazırlanıyor...</span>
+    <div class="loader-content">
+      <div class="loader-ring"></div>
+      <div class="loader-logo">M</div>
+    </div>
+    <span class="loader-text">Premium menü hazırlanıyor...</span>
   </div>
-
-  
 
   <header class="topbar">
     <div class="brand">
-      <div class="logo">M</div>
-      <div>
-        <h1>Mutfak</h1>
-        <p>Cafe & Bistro</p>
+      <div class="logo">
+        <span>M</span>
+      </div>
+      <div class="brand-text">
+        <h1>MUTFAK</h1>
+        <p>Café & Bistro</p>
       </div>
     </div>
-
-    
+    <div class="topbar-accent"></div>
   </header>
 
 <section class="hero">
   <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-particles"></div>
   <div class="hero-content">
-    <span class="premium">MUTFAK CAFE & BISTRO</span>
-    <h2>Her lokmada <br> ustalık, kalite <br> ve lezzet.</h2>
+    <div class="hero-badge">
+      <span class="badge-icon">★</span>
+      <span>MUTFAK CAFÉ & BISTRO</span>
+      <span class="badge-icon">★</span>
+    </div>
+    <h2>Her lokmada <br><em>ustalık</em>, kalite <br>ve lezzet.</h2>
     <p>Taptaze malzemeler, usta dokunuşlar ve özenle hazırlanan enfes lezzetler sizi bekliyor.</p>
-    <a href="#menu" class="hero-btn">Menüyü Keşfet</a>
+    <a href="#menu" class="hero-btn">
+      <span>Menüyü Keşfet</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-indicator"></div>
   </div>
 </section>
 
   <nav class="category-tabs" id="menu">
-    <button class="tab active" data-category="all">Tümü</button>
-    <button class="tab" data-category="pizza">Pizzalar</button>
-    <button class="tab" data-category="menu">Menüler</button>
-    <button class="tab" data-category="aperatif">Aperatifler</button>
-    <button class="tab" data-category="tatli">Tatlılar</button>
-    <button class="tab" data-category="icecekler">İçecekler</button>
+    <div class="tabs-container">
+      <button class="tab active" data-category="all">
+        <span>Tümü</span>
+      </button>
+      <button class="tab" data-category="pizza">
+        <span>Pizzalar</span>
+      </button>
+      <button class="tab" data-category="menu">
+        <span>Menüler</span>
+      </button>
+      <button class="tab" data-category="aperatif">
+        <span>Aperatifler</span>
+      </button>
+      <button class="tab" data-category="tatli">
+        <span>Tatlılar</span>
+      </button>
+      <button class="tab" data-category="icecekler">
+        <span>İçecekler</span>
+      </button>
+    </div>
   </nav>
 
   <section class="search-area">
-    <input type="text" id="searchInput" placeholder="Pizza, hamburger, patates ara..." />
+    <div class="search-wrapper">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Pizza, hamburger, patates ara..." />
+    </div>
   </section>
 
   <main class="menu-grid">
 
     <!-- PİZZALAR -->
-<!-- PİZZALAR -->
 <article class="product-card featured" data-category="pizza" data-name="americana pizza">
   <div class="badge">Pizza</div>
   <img src="image/americana.webp" alt="">
@@ -148,200 +183,145 @@
 
 <!-- MENÜLER -->
 <article class="product-card special" data-category="menu" data-name="tam parça süper menü">
-
   <img src="image/tamparca.webp" alt="Tam Parça Süper Menü">
-
   <div class="card-body">
     <h3>Tam Parça Süper Menü</h3>
-
-    <p>
-      Tam Boy Pizza • Patates Kızartması • Chicken Fingers • Pepsi / Ayran
-    </p>
-
+    <p>Tam Boy Pizza • Patates Kızartması • Chicken Fingers • Pepsi / Ayran</p>
     <strong>250₺</strong>
   </div>
-
 </article>
 
 <article class="product-card special" data-category="menu" data-name="combo menü">
   <img src="image/combo.webp" alt="Combo Menü">
-
   <div class="card-body">
     <h3>Combo Menü</h3>
-
     <p>Parça Pizza • Patates Kızartması • Pepsi / Ayran</p>
-
     <strong>220₺</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="süper menü">
   <img src="image/silver.webp" alt="Süper Menü">
-
   <div class="card-body">
     <h3>Silver Menü</h3>
-
     <p>Parça Pizza • Elma Dilimli Patates • Pepsi / Ayran</p>
-
-    <strong>220</strong>
+    <strong>220₺</strong>
   </div>
 </article>
 
-
 <article class="product-card special" data-category="menu" data-name="junior menü">
   <img src="image/juniormenü.webp" alt="Junior Menü">
-
   <div class="card-body">
     <h3>Junior Menü</h3>
-
     <p>Parça Pizza • Patates Kızartması • Piliç Nugget • Pepsi / Ayran</p>
-
     <strong>—</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="wonder menü">
   <img src="image/wondermenü.webp" alt="Wonder Menü">
-
   <div class="card-body">
     <h3>Wonder Menü</h3>
-
     <p>Parça Pizza • Piliç Nugget • Pepsi / Ayran</p>
-
     <strong>220₺</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="chicken fingers menü">
   <img src="image/chickenfingers.webp" alt="Chicken Fingers Menü">
-
   <div class="card-body">
     <h3>Chicken Fingers Menü</h3>
-
     <p>Çıtır Tavuk • Patates Kızartması • Pepsi / Ayran</p>
-
     <strong>220₺</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="piliç nuggets menü">
   <img src="image/pilicnuggets.webp" alt="Piliç Nuggets Menü">
-
   <div class="card-body">
     <h3>Piliç Nuggets Menü</h3>
-
     <p>Piliç Nuggets • Patates Kızartması • Pepsi / Ayran</p>
-
     <strong>220₺</strong>
   </div>
 </article>
 
-
 <article class="product-card special" data-category="menu" data-name="parça pizza">
   <img src="image/parcapizza.webp" alt="Parça Pizza">
-
   <div class="card-body">
     <h3>Parça Pizza</h3>
-
     <p>Taze Pişirilmiş Pizza Dilimi</p>
-
     <strong>120₺</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="tost menü">
   <img src="image/tostmenü.webp" alt="Tost Menü">
-
   <div class="card-body">
     <h3>Tost Menü</h3>
-
     <p>Tost • Patates Kızartması • Pepsi / Ayran</p>
-
     <strong>200₺</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="tavuk döner menü">
   <img src="image/dönermenü.webp" alt="Tavuk Döner Menü">
-
   <div class="card-body">
     <h3>Tavuk Döner Menü</h3>
-
     <p>Tavuk Döner • Patates Kızartması • Pepsi / Ayran</p>
-
     <strong>200₺</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="kumru menü">
   <img src="image/kumru.webp" alt="Kumru Menü">
-
   <div class="card-body">
     <h3>Kumru Menü</h3>
-
     <p>Kumru • Patates Kızartması • Pepsi / Ayran</p>
-
     <strong>220₺</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="chicken burger menü">
   <img src="image/chickenhamburger.webp" alt="Chicken Burger Menü">
-
   <div class="card-body">
     <h3>Chicken Burger Menü</h3>
-
     <p>Chicken Burger • Patates Kızartması • Pepsi / Ayran</p>
-
     <strong>220₺ / 230₺</strong>
   </div>
 </article>
 
-
 <article class="product-card special" data-category="menu" data-name="ekmek arası köfte menü">
   <img src="image/ekmekarasikofte.webp" alt="Ekmek Arası Köfte Menü">
-
   <div class="card-body">
     <h3>Ekmek Arası Köfte Menü</h3>
-
     <p>Ekmek Arası Köfte • Patates Kızartması • Pepsi / Ayran</p>
-
     <strong>230₺</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="hot-dog menü">
   <img src="image/hotdogmenu.webp" alt="Hot-Dog Menü">
-
   <div class="card-body">
     <h3>Hot-Dog Menü</h3>
-
     <p>Hot-Dog • Patates Kızartması • Pepsi / Ayran</p>
-
     <strong>200₺</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="köfte menü">
   <img src="image/köftemenü.webp" alt="Köfte Menü">
-
   <div class="card-body">
     <h3>Köfte Menü</h3>
-
     <p>Izgara Köfte • Patates Kızartması • Pepsi / Ayran</p>
-
     <strong>250₺</strong>
   </div>
 </article>
 
 <article class="product-card special" data-category="menu" data-name="sebzeli ve tavuklu makarna">
   <img src="image/makarna.webp" alt="Sebzeli ve Tavuklu Makarna">
-
   <div class="card-body">
     <h3>Sebzeli ve Tavuklu Makarna</h3>
-
     <p>Sebzeli ve Tavuklu Makarna • Özel Sos</p>
-
     <strong>--</strong>
   </div>
 </article>
@@ -448,8 +428,6 @@
   </div>
 </article>
 
-<button class="tab" data-category="icecekler">İçecekler</button>
-
 <section class="product-card drinks-card" data-category="icecekler">
   <div class="drinks-head">
     <span>🥤</span>
@@ -499,30 +477,30 @@
 
 <footer class="footer">
   <div class="footer-content">
-
-    <h2>Mutfak Cafe & Bistro</h2>
-
-    <p>Lezzetin ve Kalitenin Buluşma Noktası.</p>
-
+    <div class="footer-logo">M</div>
+    <h2>MUTFAK</h2>
+    <p>Café & Bistro</p>
+    <div class="footer-tagline">Lezzetin ve Kalitenin Buluşma Noktası</div>
     <div class="footer-divider"></div>
-
     <a href="https://cetinweb.online" target="_blank" class="powered">
-      🚀 QR Menü Altyapısı <strong>CetinWeb</strong> tarafından geliştirilmiştir.
+      <span>QR Menü Altyapısı</span>
+      <strong>CetinWeb</strong>
+      <span>tarafından geliştirilmiştir</span>
     </a>
-
   </div>
 </footer>
 
 <div class="floating-buttons">
-
     <button id="scrollTopBtn" class="fab top-fab">
-        ↑
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M18 15l-6-6-6 6"/>
+        </svg>
     </button>
-
     <a href="tel:+902744126655" class="fab phone-fab">
-       <span>📞</span>
+       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+       </svg>
     </a>
-
 </div>
 
   <script src="script.js"></script>

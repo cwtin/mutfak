@@ -2,8 +2,8 @@ const loader = document.querySelector(".loader");
 const tabs = document.querySelectorAll(".tab");
 const cards = document.querySelectorAll(".product-card");
 const searchInput = document.getElementById("searchInput");
-const themeBtn = document.getElementById("themeBtn");
 
+// Loader
 window.addEventListener("load", () => {
   setTimeout(() => {
     loader.classList.add("hide");
@@ -13,9 +13,19 @@ window.addEventListener("load", () => {
       floatingButtons.classList.add("show");
     }
 
-  }, 900);
+    // Trigger card animations
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        if (card.getBoundingClientRect().top < window.innerHeight) {
+          card.classList.add("show");
+        }
+      }, index * 50);
+    });
+
+  }, 800);
 });
 
+// Intersection Observer for cards
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -23,17 +33,22 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.18
+  threshold: 0.15,
+  rootMargin: "0px 0px -50px 0px"
 });
 
 cards.forEach(card => observer.observe(card));
 
+// Category tabs
 tabs.forEach(tab => {
   tab.addEventListener("click", () => {
     tabs.forEach(t => t.classList.remove("active"));
     tab.classList.add("active");
 
     const category = tab.dataset.category;
+
+    // Hide drinks card differently - it's not a product-card in the same way
+    const drinksCard = document.querySelector(".drinks-card");
 
     cards.forEach(card => {
       const match = category === "all" || card.dataset.category === category;
@@ -44,12 +59,17 @@ tabs.forEach(tab => {
       }
     });
 
+    if (drinksCard) {
+      const drinksMatch = category === "all" || category === "icecekler";
+      drinksCard.style.display = drinksMatch ? "block" : "none";
+    }
+
     searchInput.value = "";
 
     setTimeout(() => {
       const grid = document.querySelector(".menu-grid");
       const topbar = document.querySelector(".topbar");
-      const offset = topbar ? topbar.offsetHeight + 20 : 20;
+      const offset = topbar ? topbar.offsetHeight + 80 : 80;
 
       window.scrollTo({
         top: grid.offsetTop - offset,
@@ -59,6 +79,7 @@ tabs.forEach(tab => {
   });
 });
 
+// Search
 searchInput.addEventListener("input", () => {
   const value = searchInput.value.toLowerCase().trim();
 
@@ -67,55 +88,60 @@ searchInput.addEventListener("input", () => {
     const visible = name.includes(value);
 
     card.style.display = visible ? "block" : "none";
+
+    if (visible) {
+      card.classList.add("show");
+    }
   });
 });
 
+// Subtle parallax on hero (performance optimized)
+let ticking = false;
 
-document.addEventListener("mousemove", (e) => {
-  const x = e.clientX / window.innerWidth - 0.5;
-  const y = e.clientY / window.innerHeight - 0.5;
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const scrolled = window.scrollY;
+      const hero = document.querySelector(".hero-bg");
 
-  document.querySelectorAll(".product-card").forEach(card => {
-    card.style.transform = `translateY(0) rotateX(${y * 3}deg) rotateY(${x * 3}deg)`;
-  });
+      if (hero && scrolled < window.innerHeight) {
+        hero.style.transform = `scale(1) translateY(${scrolled * 0.15}px)`;
+      }
+
+      ticking = false;
+    });
+
+    ticking = true;
+  }
 });
 
-document.addEventListener("mouseleave", () => {
-  document.querySelectorAll(".product-card").forEach(card => {
-    card.style.transform = "";
-  });
-});
-
+// Scroll to top button
 document.addEventListener("DOMContentLoaded", () => {
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-    if (!scrollTopBtn) return;
+  if (!scrollTopBtn) return;
 
-    // Sayfa açılınca gizli başlasın
-    scrollTopBtn.classList.remove("show");
+  scrollTopBtn.classList.remove("show");
 
-    // Scroll olunca göster/gizle
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-            scrollTopBtn.classList.add("show");
-        } else {
-            scrollTopBtn.classList.remove("show");
-        }
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.classList.add("show");
+    } else {
+      scrollTopBtn.classList.remove("show");
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    scrollTopBtn.style.transform = "scale(0.9)";
+    setTimeout(() => {
+      scrollTopBtn.style.transform = "";
+    }, 150);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
-
-    // Tıklayınca yukarı çık
-    scrollTopBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        // Küçük tıklama animasyonu
-        scrollTopBtn.classList.add("clicked");
-        setTimeout(() => {
-            scrollTopBtn.classList.remove("clicked");
-        }, 250);
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    });
+  });
 });
