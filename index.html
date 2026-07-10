@@ -17,18 +17,15 @@
     <span class="loader-text">Premium menü hazırlanıyor...</span>
   </div>
 
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo">
-        <span>M</span>
-      </div>
-      <div class="brand-text">
-        <h1>MUTFAK</h1>
-        <p>Café & Bistro</p>
-      </div>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">
+      <img src="image/trp.png" alt="Mutfak Café & Bistro">
     </div>
-    <div class="topbar-accent"></div>
-  </header>
+  </div>
+
+  <div class="topbar-accent"></div>
+</header>
 
 <section class="hero">
   <div class="hero-bg"></div>
@@ -68,12 +65,18 @@
       <button class="tab" data-category="aperatif">
         <span>Aperatifler</span>
       </button>
+
+      <button class="tab" data-category="makarna">
+    <span>Makarnalar</span>
+</button>
+
       <button class="tab" data-category="tatli">
         <span>Tatlılar</span>
       </button>
       <button class="tab" data-category="icecekler">
         <span>İçecekler</span>
       </button>
+
     </div>
   </nav>
 
@@ -101,7 +104,7 @@
 </article>
 
 <article class="product-card" data-category="pizza" data-name="pastrami pizza">
-  <img src="image/pastrami.webp" alt="">
+  <img src="image/pastirma.png" alt="">
   <div class="card-body">
     <h3>Pastrami</h3>
     <p>Pizza Sosu, Pizza Peyniri, Pastırma, Mısır, Domates</p>
@@ -110,7 +113,7 @@
 </article>
 
 <article class="product-card" data-category="pizza" data-name="mix pizza">
-  <img src="image/mixpizza.webp" alt="">
+  <img src="image/mix.png" alt="">
   <div class="card-body">
     <h3>Mix</h3>
     <p>Pizza Sosu, Pizza Peyniri, Salam, Sosis, Mantar, Sucuk, Yeşil Biber, Siyah Zeytin</p>
@@ -164,7 +167,7 @@
 </article>
 
 <article class="product-card" data-category="pizza" data-name="vegeterian pizza">
-  <img src="image/vegeterian.webp" alt="">
+  <img src="image/vejeteryan.png" alt="">
   <div class="card-body">
     <h3>Vegeterian</h3>
     <p>Pizza Sosu, Pizza Peyniri, Mısır, Yeşil Biber, Siyah Zeytin</p>
@@ -182,6 +185,12 @@
 </article>
 
 <!-- MENÜLER -->
+
+<!-- PİZZA MENÜLERİ -->
+<div class="category-title" data-category="menu">
+  <h2> Pizza Menüleri</h2>
+</div>
+
 <article class="product-card special" data-category="menu" data-name="tam parça süper menü">
   <img src="image/tamparca.webp" alt="Tam Parça Süper Menü">
   <div class="card-body">
@@ -209,15 +218,6 @@
   </div>
 </article>
 
-<article class="product-card special" data-category="menu" data-name="junior menü">
-  <img src="image/juniormenü.webp" alt="Junior Menü">
-  <div class="card-body">
-    <h3>Junior Menü</h3>
-    <p>Parça Pizza • Patates Kızartması • Piliç Nugget • Pepsi / Ayran</p>
-    <strong>—</strong>
-  </div>
-</article>
-
 <article class="product-card special" data-category="menu" data-name="wonder menü">
   <img src="image/wondermenü.webp" alt="Wonder Menü">
   <div class="card-body">
@@ -226,6 +226,48 @@
     <strong>220₺</strong>
   </div>
 </article>
+
+<article class="product-card special" data-category="menu" data-name="parça pizza">
+  <img src="image/parcapizza.webp" alt="Parça Pizza">
+  <div class="card-body">
+    <h3>Parça Pizza</h3>
+    <p>Taze Pişirilmiş Pizza Dilimi</p>
+    <strong>120₺</strong>
+  </div>
+</article>
+
+<!-- TOST MENÜLERİ -->
+<div class="category-title" data-category="menu">
+  <h2> Tost Menüleri</h2>
+</div>
+
+<article class="product-card special" data-category="menu" data-name="tost menü">
+  <img src="image/tostmenü.webp" alt="Tost Menü">
+  <div class="card-body">
+    <h3>Tost Menü</h3>
+    <p>Tost • Patates Kızartması • Pepsi / Ayran</p>
+    <strong>200₺</strong>
+  </div>
+</article>
+
+<!-- TAVUK DÖNER MENÜLERİ -->
+<div class="category-title" data-category="menu">
+  <h2> Tavuk Döner Menüleri</h2>
+</div>
+
+<article class="product-card special" data-category="menu" data-name="tavuk döner menü">
+  <img src="image/dönermenü.webp" alt="Tavuk Döner Menü">
+  <div class="card-body">
+    <h3>Tavuk Döner Menü</h3>
+    <p>Tavuk Döner • Patates Kızartması • Pepsi / Ayran</p>
+    <strong>200₺</strong>
+  </div>
+</article>
+
+<!-- PİLİÇ MENÜLERİ -->
+<div class="category-title" data-category="menu">
+  <h2> Piliç Menüleri</h2>
+</div>
 
 <article class="product-card special" data-category="menu" data-name="chicken fingers menü">
   <img src="image/chickenfingers.webp" alt="Chicken Fingers Menü">
@@ -245,41 +287,10 @@
   </div>
 </article>
 
-<article class="product-card special" data-category="menu" data-name="parça pizza">
-  <img src="image/parcapizza.webp" alt="Parça Pizza">
-  <div class="card-body">
-    <h3>Parça Pizza</h3>
-    <p>Taze Pişirilmiş Pizza Dilimi</p>
-    <strong>120₺</strong>
-  </div>
-</article>
-
-<article class="product-card special" data-category="menu" data-name="tost menü">
-  <img src="image/tostmenü.webp" alt="Tost Menü">
-  <div class="card-body">
-    <h3>Tost Menü</h3>
-    <p>Tost • Patates Kızartması • Pepsi / Ayran</p>
-    <strong>200₺</strong>
-  </div>
-</article>
-
-<article class="product-card special" data-category="menu" data-name="tavuk döner menü">
-  <img src="image/dönermenü.webp" alt="Tavuk Döner Menü">
-  <div class="card-body">
-    <h3>Tavuk Döner Menü</h3>
-    <p>Tavuk Döner • Patates Kızartması • Pepsi / Ayran</p>
-    <strong>200₺</strong>
-  </div>
-</article>
-
-<article class="product-card special" data-category="menu" data-name="kumru menü">
-  <img src="image/kumru.webp" alt="Kumru Menü">
-  <div class="card-body">
-    <h3>Kumru Menü</h3>
-    <p>Kumru • Patates Kızartması • Pepsi / Ayran</p>
-    <strong>220₺</strong>
-  </div>
-</article>
+<!-- BURGER MENÜLERİ -->
+<div class="category-title" data-category="menu">
+  <h2> Burger Menüleri</h2>
+</div>
 
 <article class="product-card special" data-category="menu" data-name="chicken burger menü">
   <img src="image/chickenhamburger.webp" alt="Chicken Burger Menü">
@@ -290,14 +301,24 @@
   </div>
 </article>
 
-<article class="product-card special" data-category="menu" data-name="ekmek arası köfte menü">
-  <img src="image/ekmekarasikofte.webp" alt="Ekmek Arası Köfte Menü">
+<!-- KUMRU MENÜLERİ -->
+<div class="category-title" data-category="menu">
+  <h2> Kumru Menüleri</h2>
+</div>
+
+<article class="product-card special" data-category="menu" data-name="kumru menü">
+  <img src="image/kumru.webp" alt="Kumru Menü">
   <div class="card-body">
-    <h3>Ekmek Arası Köfte Menü</h3>
-    <p>Ekmek Arası Köfte • Patates Kızartması • Pepsi / Ayran</p>
-    <strong>230₺</strong>
+    <h3>Kumru Menü</h3>
+    <p>Kumru • Patates Kızartması • Pepsi / Ayran</p>
+    <strong>220₺</strong>
   </div>
 </article>
+
+<!-- HOT DOG MENÜLERİ -->
+<div class="category-title" data-category="menu">
+  <h2> Hot Dog Menüleri</h2>
+</div>
 
 <article class="product-card special" data-category="menu" data-name="hot-dog menü">
   <img src="image/hotdogmenu.webp" alt="Hot-Dog Menü">
@@ -305,6 +326,20 @@
     <h3>Hot-Dog Menü</h3>
     <p>Hot-Dog • Patates Kızartması • Pepsi / Ayran</p>
     <strong>200₺</strong>
+  </div>
+</article>
+
+<!-- KÖFTE MENÜLERİ -->
+<div class="category-title" data-category="menu">
+  <h2> Köfte Menüleri</h2>
+</div>
+
+<article class="product-card special" data-category="menu" data-name="ekmek arası köfte menü">
+  <img src="image/ekmekarasikofte.webp" alt="Ekmek Arası Köfte Menü">
+  <div class="card-body">
+    <h3>Ekmek Arası Köfte Menü</h3>
+    <p>Ekmek Arası Köfte • Patates Kızartması • Pepsi / Ayran</p>
+    <strong>230₺</strong>
   </div>
 </article>
 
@@ -317,19 +352,6 @@
   </div>
 </article>
 
-<article class="product-card special" data-category="menu" data-name="sebzeli ve tavuklu makarna">
-  <img src="image/makarna.webp" alt="Sebzeli ve Tavuklu Makarna">
-  <div class="card-body">
-    <h3>Sebzeli ve Tavuklu Makarna</h3>
-    <p>Sebzeli ve Tavuklu Makarna • Özel Sos</p>
-    <strong>--</strong>
-  </div>
-</article>
-
-<article class="product-card special" data-category="menu" data-name="sigara böreği">
-  <img src="image/sigarabogregi.webp" alt="">
-  <div class="card-body"><h3>Sigara Böreği</h3><p>Menü</p><strong>150₺</strong></div>
-</article>
 
 <!-- APERATİFLER -->
 <article class="product-card" data-category="aperatif" data-name="tavuk döner">
@@ -417,6 +439,44 @@
   <div class="card-body"><h3>Ton Balıklı Salata</h3><p>Salata</p><strong>200₺</strong></div>
 </article>
 
+<!-- MAKARNALAR -->
+
+<article class="product-card special" data-category="makarna" data-name="kremalı körili mantar ve tavuklu makarna">
+  <img src="image/mantartavuk.webp" alt="Kremalı Körili Mantar ve Tavuklu Makarna">
+  <div class="card-body">
+    <h3>Kremalı Körili Mantar ve Tavuklu</h3>
+    <p>Kremalı sos, köri, mantar ve tavuk ile hazırlanan özel makarna.</p>
+    <strong></strong>
+  </div>
+</article>
+
+<article class="product-card special" data-category="makarna" data-name="domates soslu şinitzelli makarna">
+  <img src="image/sinitzelli.webp" alt="Domates Soslu Şinitzelli Makarna">
+  <div class="card-body">
+    <h3>Domates Soslu Şinitzelli</h3>
+    <p>Domates sosu ve çıtır şinitzel eşliğinde servis edilen makarna.</p>
+    <strong></strong>
+  </div>
+</article>
+
+<article class="product-card special" data-category="makarna" data-name="kremalı ton balıklı makarna">
+  <img src="image/tonbaliklim.webp" alt="Kremalı Ton Balıklı Makarna">
+  <div class="card-body">
+    <h3>Kremalı Ton Balıklı</h3>
+    <p>Kremalı sos ve ton balığı ile hazırlanan lezzetli makarna.</p>
+    <strong></strong>
+  </div>
+</article>
+
+<article class="product-card special" data-category="makarna" data-name="domates soslu sebzeli makarna">
+  <img src="image/sebzeli.webp" alt="Domates Soslu Sebzeli Makarna">
+  <div class="card-body">
+    <h3>Domates Soslu Sebzeli</h3>
+    <p>Taze sebzeler ve domates sosuyla hazırlanan nefis makarna.</p>
+    <strong></strong>
+  </div>
+</article>
+
 <!-- TATLILAR -->
 <article class="product-card dessert" data-category="tatli" data-name="sufle">
   <div class="badge gold">Tatlı</div>
@@ -445,7 +505,6 @@
       <div class="drink-item"><span>Pepsi Şişe</span><strong>60₺</strong></div>
       <div class="drink-item"><span>Pepsi Bardak</span><strong>50₺</strong></div>
       <div class="drink-item"><span>Yedigün Teneke</span><strong>70₺</strong></div>
-      <div class="drink-item"><span>Yedigün Şişe</span><strong>-</strong></div>
       <div class="drink-item"><span>Fruko Gazoz</span><strong>70₺</strong></div>
       <div class="drink-item"><span>Fruko Cam Şişe</span><strong>60₺</strong></div>
       <div class="drink-item"><span>Meyve Suyu</span><strong>70₺</strong></div>
@@ -465,10 +524,7 @@
       <div class="drink-item"><span>Türk Kahvesi</span><strong>70₺</strong></div>
       <div class="drink-item"><span>Nescafe</span><strong>70₺</strong></div>
       <div class="drink-item"><span>Sıcak Çikolata</span><strong>70₺</strong></div>
-      <div class="drink-item"><span>Salep</span><strong>-</strong></div>
-      <div class="drink-item"><span>Ada Çayı</span><strong>-</strong></div>
       <div class="drink-item"><span>Bitki Çayı</span><strong>40₺</strong></div>
-      <div class="drink-item"><span>Ihlamur</span><strong>-</strong></div>
     </div>
   </div>
 </section>
