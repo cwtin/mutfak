@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
+  <title>Mutfak Admin Paneli</title>
+
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <!-- GİRİŞ EKRANI -->
+  <section class="login-page" id="loginPage">
+
+    <div class="login-card">
+
+      <div class="login-logo">M</div>
+
+      <span class="panel-label">Yönetim Paneli</span>
+
+      <h1>Mutfak Café & Bistro</h1>
+
+      <p class="login-description">
+        Menü fiyatlarını ve ürün açıklamalarını düzenlemek için giriş yapın.
+      </p>
+
+      <form id="loginForm">
+
+        <div class="form-group">
+          <label for="email">E-posta</label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="admin@email.com"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Şifre</label>
+
+          <div class="password-wrapper">
+
+            <input
+              type="password"
+              id="password"
+              placeholder="Şifrenizi yazın"
+              autocomplete="current-password"
+              required
+            >
+
+            <button
+              type="button"
+              class="password-toggle"
+              id="passwordToggle"
+              aria-label="Şifreyi göster"
+            >
+              Göster
+            </button>
+
+          </div>
+        </div>
+
+        <button type="submit" class="primary-button" id="loginButton">
+          Giriş Yap
+        </button>
+
+        <div class="form-message" id="loginMessage"></div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- ADMIN PANEL -->
+  <section class="admin-page hidden" id="adminPage">
+
+    <header class="admin-header">
+
+      <div class="header-brand">
+
+        <div class="header-logo">M</div>
+
+        <div>
+          <span>ÇetinWeb QR Menü</span>
+          <h1>Mutfak Yönetim Paneli</h1>
+        </div>
+
+      </div>
+
+      <div class="header-actions">
+
+        <a
+          href="index.html"
+          target="_blank"
+          class="menu-link"
+        >
+          Menüyü Gör
+        </a>
+
+        <button type="button" class="logout-button" id="logoutButton">
+          Çıkış Yap
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <main class="admin-container">
+
+      <section class="welcome-card">
+
+        <div>
+          <span class="welcome-label">Menü Yönetimi</span>
+          <h2>Ürün fiyatlarını düzenle</h2>
+
+          <p>
+            Kaydettiğiniz değişiklikler müşterilerin gördüğü QR menüye
+            otomatik olarak yansır.
+          </p>
+        </div>
+
+        <div class="connection-status" id="connectionStatus">
+          <span class="status-dot"></span>
+          Firebase bağlantısı bekleniyor
+        </div>
+
+      </section>
+
+
+      <section class="stats-grid">
+
+        <article class="stat-card">
+          <span>Toplam ürün</span>
+          <strong id="productCount">0</strong>
+        </article>
+
+        <article class="stat-card">
+          <span>Son güncelleme</span>
+          <strong id="lastUpdate">Henüz yok</strong>
+        </article>
+
+      </section>
+
+
+      <section class="products-section">
+
+        <div class="section-header">
+
+          <div>
+            <span class="section-label">Ürünler</span>
+            <h2>Fiyat ve açıklama düzenle</h2>
+          </div>
+
+          <div class="search-box">
+            <input
+              type="search"
+              id="adminSearch"
+              placeholder="Ürün ara..."
+            >
+          </div>
+
+        </div>
+
+
+        <div class="loading-box" id="loadingBox">
+          <div class="loading-spinner"></div>
+          <p>Ürünler yükleniyor...</p>
+        </div>
+
+
+        <div class="empty-box hidden" id="emptyBox">
+          <h3>Henüz ürün verisi bulunamadı</h3>
+
+          <p>
+            Önce normal menü sayfasını bir kez açın. Mevcut ürünler
+            Firebase veritabanına otomatik olarak aktarılacaktır.
+          </p>
+
+          <a href="index.html" target="_blank">
+            Menüyü Aç
+          </a>
+        </div>
+
+
+        <div class="products-list" id="productsList"></div>
+
+      </section>
+
+    </main>
+
+
+    <!-- BİLDİRİM -->
+    <div class="toast" id="toast">
+      <span id="toastText">Kaydedildi</span>
+    </div>
+
+  </section>
+
+
+  <script type="module" src="admin.js"></script>
+
+</body>
+</html>
