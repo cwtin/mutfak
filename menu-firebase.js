@@ -158,6 +158,8 @@ function updateProductCard(card, product) {
     descriptionElement.textContent = product.description;
   }
 
+  updateCalorie(card, product);
+
   if (product.priceText === undefined) return;
 
   const sizes = card.querySelectorAll(".sizes span");
@@ -243,4 +245,43 @@ function getCategoryLabel(category) {
   };
 
   return categories[category] || category;
+}
+
+function updateCalorie(card, product) {
+  let calorieElement = card.querySelector(".product-calorie");
+
+  const calorieValue = Number(product.calorie || 0);
+  const shouldShow =
+    product.calorieVisible !== false &&
+    calorieValue > 0;
+
+  if (!shouldShow) {
+    if (calorieElement) {
+      calorieElement.remove();
+    }
+
+    return;
+  }
+
+  if (!calorieElement) {
+    calorieElement = document.createElement("div");
+    calorieElement.className = "product-calorie";
+
+    const cardBody = card.querySelector(".card-body");
+
+    if (!cardBody) return;
+
+    const description = cardBody.querySelector("p");
+
+    if (description) {
+      description.insertAdjacentElement(
+        "afterend",
+        calorieElement
+      );
+    } else {
+      cardBody.appendChild(calorieElement);
+    }
+  }
+
+  calorieElement.textContent = `${calorieValue} kcal`;
 }

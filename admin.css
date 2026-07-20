@@ -602,3 +602,22 @@ a {
     padding: 26px 20px;
   }
 }
+
+.calorie-toggle-label {
+  min-height: 46px;
+  padding: 0 12px;
+  display: flex !important;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #0e0c0a;
+  color: var(--gold-light) !important;
+  cursor: pointer;
+}
+
+.calorie-toggle-label input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+}

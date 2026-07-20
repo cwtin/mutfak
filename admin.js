@@ -229,49 +229,66 @@ function createProductCard(id, product) {
 
   card.className = "product-editor";
 
-  card.innerHTML = `
+card.innerHTML = `
 
 <div class="product-editor-header">
 
-<div>
+  <div>
+    <h3>${product.name}</h3>
 
-<h3>${product.name}</h3>
-
-<div class="product-category">
-${product.categoryLabel || product.category}
-</div>
-
-</div>
+    <div class="product-category">
+      ${product.categoryLabel || product.category}
+    </div>
+  </div>
 
 </div>
 
 <div class="editor-fields">
 
-<div class="editor-group">
+  <div class="editor-group">
+    <label>Fiyat</label>
 
-<label>Fiyat</label>
+    <input
+      class="edit-input price"
+      type="text"
+      value="${product.priceText || ""}"
+    >
+  </div>
 
-<input
-class="edit-input price"
-type="text"
-value="${product.priceText || ""}"
->
+  <div class="editor-group">
+    <label>Açıklama</label>
 
-</div>
+    <textarea class="edit-textarea desc">${
+      product.description || ""
+    }</textarea>
+  </div>
 
-<div class="editor-group">
+  <div class="editor-group">
+    <label>Kalori</label>
 
-<label>Açıklama</label>
+    <input
+      class="edit-input calorie"
+      type="number"
+      min="0"
+      value="${product.calorie || ""}"
+      placeholder="Örnek: 650"
+    >
+  </div>
 
-<textarea class="edit-textarea desc">${
-product.description || ""
-}</textarea>
+  <div class="editor-group">
+    <label class="calorie-toggle-label">
+      <input
+        type="checkbox"
+        class="calorie-visible"
+        ${product.calorieVisible !== false ? "checked" : ""}
+      >
+      Kaloriyi menüde göster
+    </label>
+  </div>
 
-</div>
-
-<button class="save-button">
-Kaydet
-</button>
+  <button class="save-button">
+    Kaydet
+  </button>
 
 </div>
 
@@ -279,16 +296,16 @@ Kaydet
 
   const btn = card.querySelector(".save-button");
 
-  btn.onclick = () => {
-
-    saveProduct(
-      id,
-      card.querySelector(".price").value,
-      card.querySelector(".desc").value,
-      btn
-    );
-
-  };
+btn.onclick = () => {
+  saveProduct(
+    id,
+    card.querySelector(".price").value,
+    card.querySelector(".desc").value,
+    card.querySelector(".calorie").value,
+    card.querySelector(".calorie-visible").checked,
+    btn
+  );
+};
 
   return card;
 
@@ -299,6 +316,8 @@ async function saveProduct(
   id,
   priceText,
   description,
+  calorie,
+  calorieVisible,
   button
 ) {
   if (!id) return;
@@ -312,6 +331,8 @@ async function saveProduct(
       {
         priceText: priceText.trim(),
         description: description.trim(),
+        calorie: calorie ? Number(calorie) : "",
+        calorieVisible: Boolean(calorieVisible),
         updatedAt: Date.now()
       }
     );
