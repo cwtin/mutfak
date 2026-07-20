@@ -522,3 +522,20 @@ function closeImageModal() {
   modal.classList.remove("show");
   document.body.classList.remove("modal-open");
 }
+
+// Çift tıklama zoomunu engelle
+let lastTouchEnd = 0;
+
+document.addEventListener(
+  "touchend",
+  function (event) {
+    const now = Date.now();
+
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+
+    lastTouchEnd = now;
+  },
+  { passive: false }
+);
