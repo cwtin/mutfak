@@ -235,14 +235,15 @@ function createProductId(index) {
 // KATEGORİ İSMİ
 
 function getCategoryLabel(category) {
-  const categories = {
-    pizza: "Pizzalar",
-    menu: "Menüler",
-    aperatif: "Aperatifler",
-    makarna: "Makarnalar",
-    tatli: "Tatlılar",
-    icecekler: "İçecekler"
-  };
+const categories = {
+  pizza: "Pizzalar",
+  menu: "Pizza Menüler",
+  menuler: "Menüler",
+  aperatif: "Aperatifler",
+  makarna: "Makarnalar",
+  tatli: "Tatlılar",
+  icecekler: "İçecekler"
+};
 
   return categories[category] || category;
 }

@@ -62,9 +62,12 @@ tabs.forEach(tab => {
     });
 
     // Menü başlıkları sadece Menüler sekmesinde görünsün
-    categoryTitles.forEach(title => {
-      title.style.display = category === "menu" ? "block" : "none";
-    });
+categoryTitles.forEach(title => {
+  const titleCategory = title.dataset.category;
+
+  title.style.display =
+    titleCategory === category ? "block" : "none";
+});
 
     if (drinksCard) {
       const drinksMatch =
