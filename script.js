@@ -387,3 +387,138 @@ function shakeCartIcon() {
     cartBtn.classList.remove("shake");
   }, 600);
 }
+
+// Ürün görsellerini büyütme
+document.addEventListener("DOMContentLoaded", () => {
+  const imageModal = document.getElementById("imageModal");
+  const imageModalImg = document.getElementById("imageModalImg");
+  const imageModalClose = document.getElementById("imageModalClose");
+
+  if (!imageModal || !imageModalImg || !imageModalClose) return;
+
+  document.querySelectorAll(".product-card > img").forEach((image) => {
+    image.addEventListener("click", () => {
+      imageModalImg.src = image.src;
+      imageModalImg.alt = image.alt || "Ürün görseli";
+      imageModal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function closeImageModal() {
+    imageModal.classList.remove("show");
+    imageModalImg.src = "";
+    document.body.style.overflow = "";
+  }
+
+  imageModalClose.addEventListener("click", closeImageModal);
+
+  imageModal.addEventListener("click", (event) => {
+    if (event.target === imageModal) {
+      closeImageModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeImageModal();
+    }
+  });
+});
+
+// Ürün fotoğraflarını büyütme
+document.addEventListener("DOMContentLoaded", () => {
+  createImageModal();
+
+  document.querySelectorAll(".product-card").forEach(card => {
+    if (card.classList.contains("drinks-card")) return;
+
+    const image = card.querySelector(":scope > img");
+    if (!image) return;
+
+    card.classList.add("image-zoom-card");
+
+    // Aynı ikon tekrar oluşmasın
+    if (!card.querySelector(".image-zoom-icon")) {
+      const zoomButton = document.createElement("button");
+
+      zoomButton.type = "button";
+      zoomButton.className = "image-zoom-icon";
+      zoomButton.setAttribute("aria-label", "Fotoğrafı büyüt");
+      zoomButton.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5"/>
+        </svg>
+      `;
+
+      zoomButton.addEventListener("click", event => {
+        event.stopPropagation();
+        openImageModal(image);
+      });
+
+      card.appendChild(zoomButton);
+    }
+
+    image.addEventListener("click", () => {
+      openImageModal(image);
+    });
+  });
+});
+
+function createImageModal() {
+  if (document.querySelector(".image-modal")) return;
+
+  const modal = document.createElement("div");
+  modal.className = "image-modal";
+
+  modal.innerHTML = `
+    <button
+      type="button"
+      class="image-modal-close"
+      aria-label="Fotoğrafı kapat"
+    >
+      &times;
+    </button>
+
+    <img src="" alt="">
+  `;
+
+  document.body.appendChild(modal);
+
+  modal.addEventListener("click", event => {
+    if (
+      event.target === modal ||
+      event.target.classList.contains("image-modal-close")
+    ) {
+      closeImageModal();
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeImageModal();
+    }
+  });
+}
+
+function openImageModal(image) {
+  const modal = document.querySelector(".image-modal");
+  const modalImage = modal?.querySelector("img");
+
+  if (!modal || !modalImage) return;
+
+  modalImage.src = image.src;
+  modalImage.alt = image.alt || "Ürün fotoğrafı";
+
+  modal.classList.add("show");
+  document.body.classList.add("modal-open");
+}
+
+function closeImageModal() {
+  const modal = document.querySelector(".image-modal");
+
+  if (!modal) return;
+
+  modal.classList.remove("show");
+  document.body.classList.remove("modal-open");
+}
