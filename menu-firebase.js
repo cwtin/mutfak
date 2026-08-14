@@ -8,9 +8,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   try {
-    await synchronizeMenu();
+    assignFirebaseIds();
     listenMenuUpdates();
   } catch (error) {
     console.error("Firebase menü hatası:", error);
