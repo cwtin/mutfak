@@ -224,71 +224,134 @@ function createCartPanel() {
 }
 
 function createProductButtons() {
-  document.querySelectorAll(".product-card").forEach(card => {
+  document.querySelectorAll(".product-card").forEach((card) => {
     if (card.classList.contains("drinks-card")) return;
 
-    const title = card.querySelector("h3")?.textContent.trim();
-    const sizes = card.querySelectorAll(".sizes span");
     const body = card.querySelector(".card-body");
+    const sizes = card.querySelectorAll(".sizes span");
 
-    if (!title || !body) return;
+    if (!body) return;
 
-    // Pizza gibi S M L fiyatları olan ürünler
+    // Pizza boyları
     if (sizes.length > 0) {
-      sizes.forEach(size => {
+      sizes.forEach((size) => {
         size.classList.add("size-cart-btn");
         size.title = "Sepete ekle";
 
-        size.addEventListener("click", () => {
-          const text = size.textContent.trim();
-          const price = extractPrice(text);
-          const sizeName = text.replace(/[0-9₺]/g, "").trim();
+        // Aynı olay iki kez eklenmesin
+        if (size.dataset.cartReady === "true") return;
 
-          addToCart(`${title} ${sizeName}`, price);
+        size.dataset.cartReady = "true";
+
+        size.addEventListener("click", () => {
+          const currentTitle =
+            card.querySelector("h3")?.textContent.trim() ||
+            card.dataset.name ||
+            "Ürün";
+
+          const currentText = size.textContent.trim();
+          const currentPrice = extractPrice(currentText);
+
+          const sizeName = currentText
+            .replace(/[0-9₺₤TL\s]/gi, "")
+            .trim();
+
+          addToCart(
+            sizeName
+              ? `${currentTitle} ${sizeName}`
+              : currentTitle,
+            currentPrice
+          );
         });
       });
-    } else {
-      // Normal tek fiyatlı ürünler
-      if (body.querySelector(".add-cart-btn")) return;
 
-      const priceText = card.querySelector("strong")?.textContent || "";
-      const price = extractPrice(priceText);
-
-      const btn = document.createElement("button");
-      btn.className = "add-cart-btn";
-      btn.textContent = "Sepete Ekle";
-
-      btn.addEventListener("click", () => {
-        addToCart(title, price);
-      });
-
-      body.appendChild(btn);
+      return;
     }
+
+    // Normal ürünlerde aynı butonu tekrar oluşturma
+    if (body.querySelector(".add-cart-btn")) return;
+
+    const btn = document.createElement("button");
+
+    btn.type = "button";
+    btn.className = "add-cart-btn";
+    btn.textContent = "Sepete Ekle";
+
+    btn.addEventListener("click", () => {
+      // İsim ve fiyat tıklama anında okunur
+      const currentTitle =
+        card.querySelector("h3")?.textContent.trim() ||
+        card.dataset.name ||
+        "Ürün";
+
+      const currentPriceText =
+        card.querySelector(".card-body strong")
+          ?.textContent.trim() || "";
+
+      const currentPrice =
+        extractPrice(currentPriceText);
+
+      if (!currentPrice) {
+        console.error(
+          "Ürün fiyatı okunamadı:",
+          currentTitle,
+          currentPriceText
+        );
+
+        return;
+      }
+
+      addToCart(
+        currentTitle,
+        currentPrice
+      );
+    });
+
+    body.appendChild(btn);
   });
 }
 
 function createDrinkButtons() {
-  document.querySelectorAll(".drink-item").forEach(item => {
+  document.querySelectorAll(".drink-item").forEach((item) => {
     if (item.querySelector(".drink-add-btn")) return;
 
-    const name = item.querySelector("span")?.textContent.trim();
-    const priceText = item.querySelector("strong")?.textContent || "";
-    const price = extractPrice(priceText);
-
-    if (!name || !price) return;
-
     const btn = document.createElement("button");
+
+    btn.type = "button";
     btn.className = "drink-add-btn";
     btn.textContent = "+";
 
     btn.addEventListener("click", () => {
-      addToCart(name, price);
+      const currentName =
+        item.querySelector("span")?.textContent.trim() ||
+        "İçecek";
+
+      const currentPriceText =
+        item.querySelector("strong")?.textContent.trim() ||
+        "";
+
+      const currentPrice =
+        extractPrice(currentPriceText);
+
+      if (!currentPrice) {
+        console.error(
+          "İçecek fiyatı okunamadı:",
+          currentName,
+          currentPriceText
+        );
+
+        return;
+      }
+
+      addToCart(
+        currentName,
+        currentPrice
+      );
     });
 
     item.appendChild(btn);
   });
 }
-
 function extractPrice(text) {
   const match = text.match(/\d+/);
   return match ? Number(match[0]) : 0;
